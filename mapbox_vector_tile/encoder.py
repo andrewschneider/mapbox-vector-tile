@@ -65,6 +65,13 @@ class VectorTile:
         rounded = d.quantize(1, rounding=decimal.ROUND_HALF_EVEN)
         return float(rounded)
 
+    def add_props(self, props):
+        for layer in self.tile.layers:
+            for feature in layer.features:
+                _props = props[layer.values[feature.tags[1]].int_value]
+                self._handle_attr(layer, feature, _props)
+        # print self.tile
+
     def addFeatures(self, features, layer_name='',
                     quantize_bounds=None, y_coord_down=False):
 
