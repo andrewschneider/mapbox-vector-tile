@@ -4,8 +4,8 @@ from . import decoder
 
 def decode(tile, y_coord_down=False):
     vector_tile = decoder.TileData()
-    message = vector_tile.getMessage(tile, y_coord_down)
-    return message
+    vector_tile.getMessage(tile, y_coord_down)
+    return vector_tile
 
 
 def encode(layers, quantize_bounds=None, y_coord_down=False, extents=4096,
@@ -20,7 +20,8 @@ def encode(layers, quantize_bounds=None, y_coord_down=False, extents=4096,
         vector_tile.addFeatures(layers['features'], layers['name'],
                                 quantize_bounds, y_coord_down)
 
-    return vector_tile.tile.SerializeToString()
+    return vector_tile
+    # return vector_tile.tile.SerializeToString()
 
 
 def encode_geoms_then_props(layers, props, quantize_bounds=None, y_coord_down=False, extents=4096,
