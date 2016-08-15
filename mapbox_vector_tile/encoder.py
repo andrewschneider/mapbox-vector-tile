@@ -68,7 +68,7 @@ class VectorTile:
     def add_props(self, props):
         for layer in self.tile.layers:
             for feature in layer.features:
-                if feature.tags[1]].int_value in layer.values:
+                if feature.tags[1].int_value in layer.values:
                     _props = props[layer.values[feature.tags[1]].int_value]
                     self._handle_attr(layer, feature, _props)
         # print self.tile
